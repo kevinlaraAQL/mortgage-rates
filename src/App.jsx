@@ -258,7 +258,7 @@ export default function App() {
       {/* ── Header ── */}
       <div className="header">
         <div className="header-inner">
-          <h1>Today's Mortgage Rates <span>📊</span></h1>
+          <h1>Today's Mortgage Rates</h1>
           <div className="header-right">
             {loading
               ? <span className="spinner" title="Fetching live rates…" />
@@ -266,7 +266,6 @@ export default function App() {
             }
             <div className="header-buttons">
               <button className="btn-share">Share</button>
-              <button className="btn-more">More Rates Data ▾</button>
             </div>
           </div>
         </div>
@@ -316,7 +315,21 @@ export default function App() {
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                <XAxis dataKey="label" tick={{ fontSize: 11 }} interval={0} />
+                <XAxis
+                  dataKey="label"
+                  interval={0}
+                  tickLine={false}
+                  tick={({ x, y, payload }) => {
+                    if (!payload.value) return <g key={`empty-${x}`} />
+                    return (
+                      <g transform={`translate(${x},${y})`}>
+                        <text x={0} y={0} dy={12} textAnchor="middle" fill="#999" fontSize={11}>
+                          {payload.value}
+                        </text>
+                      </g>
+                    )
+                  }}
+                />
                 <YAxis
                   domain={[2.5, 8]}
                   tickFormatter={v => `${v}%`}

@@ -27,12 +27,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-s
   cursor: pointer; font-weight: 700;
 }
 .btn-share:hover { background: #c9e63e; }
-.btn-more {
-  background: transparent; color: #BAD532;
-  border: 1px solid #BAD532; padding: 8px 13px;
-  border-radius: 4px; font-size: 13px; cursor: pointer;
-}
-.btn-more:hover { background: rgba(186,213,50,0.1); }
 
 /* ── Spinner ── */
 @keyframes spin { to { transform: rotate(360deg); } }
