@@ -78,15 +78,28 @@ function buildFallbackRates(history) {
 
 // ── FRED fetch ────────────────────────────────────────────────
 async function fredFetch(seriesId, limit) {
-  const target = encodeURIComponent(
+  const base =
     `https://api.stlouisfed.org/fred/series/observations` +
     `?series_id=${seriesId}&api_key=${FRED_API_KEY}` +
     `&file_type=json&limit=${limit}&sort_order=desc`
-  )
-  const res = await fetch(`https://corsproxy.io/?${target}`)
-  if (!res.ok) throw new Error(`FRED ${res.status}`)
-  const json = await res.json()
-  return json.observations.filter(o => o.value !== '.')
+
+  const proxies = [
+    `https://corsproxy.io/?${encodeURIComponent(base)}`,
+    `https://api.allorigins.win/raw?url=${encodeURIComponent(base)}`,
+    `https://thingproxy.freeboard.io/fetch/${base}`,
+  ]
+
+  for (const url of proxies) {
+    try {
+      const res = await fetch(url)
+      if (!res.ok) continue
+      const json = await res.json()
+      if (json.observations) return json.observations.filter(o => o.value !== '.')
+    } catch {
+      continue
+    }
+  }
+  throw new Error('All proxies failed')
 }
 
 async function loadFredData() {
