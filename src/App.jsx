@@ -323,7 +323,7 @@ export default function App() {
                     if (!payload.value) return <g key={`empty-${x}`} />
                     return (
                       <g transform={`translate(${x},${y})`}>
-                        <text x={0} y={0} dy={12} textAnchor="middle" fill="#999" fontSize={11}>
+                        <text x={0} y={0} dy={12} textAnchor="middle" fill="#666" fontSize={12}>
                           {payload.value}
                         </text>
                       </g>
