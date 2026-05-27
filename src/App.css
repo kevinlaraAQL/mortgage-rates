@@ -1,0 +1,195 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; background: #fff; color: #333; }
+
+/* ── Page (transparent so Squarespace bg shows through) ── */
+.page { background: #fff; }
+
+/* ── Header — fondo blanco, sin franja ── */
+.header { background: #fff; border-bottom: 1px solid #e8e8e8; }
+.header-inner {
+  max-width: 960px; margin: 0 auto; padding: 18px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.header h1 {
+  font-size: 22px; font-weight: 700; color: #0C2139;
+  display: flex; align-items: center; gap: 10px;
+}
+.header-right {
+  display: flex; align-items: center; gap: 10px;
+  flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end;
+}
+.updated-label { color: #aaa; font-size: 11px; white-space: nowrap; }
+.header-buttons { display: flex; gap: 8px; }
+.btn-share {
+  background: #BAD532; color: #0C2139; border: none;
+  padding: 8px 18px; border-radius: 4px; font-size: 13px;
+  cursor: pointer; font-weight: 700;
+}
+.btn-share:hover { background: #c9e63e; }
+.btn-more {
+  background: transparent; color: #BAD532;
+  border: 1px solid #BAD532; padding: 8px 13px;
+  border-radius: 4px; font-size: 13px; cursor: pointer;
+}
+.btn-more:hover { background: rgba(186,213,50,0.1); }
+
+/* ── Spinner ── */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  display: inline-block; width: 14px; height: 14px;
+  border: 2px solid #e0e0e0; border-top-color: #BAD532;
+  border-radius: 50%; animation: spin 0.75s linear infinite;
+}
+
+/* ── Content ── */
+.content { max-width: 960px; margin: 0 auto; padding: 20px 24px; }
+.subtitle { font-size: 12px; color: #aaa; margin-bottom: 18px; }
+
+/* ── Rate grid ── */
+.rate-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid #e8e8e8; border-radius: 8px; overflow: hidden;
+  margin-bottom: 16px;
+}
+.rate-card {
+  padding: 18px 14px;
+  border-right: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  background: #fff;
+}
+.rate-card:nth-child(3n) { border-right: none; }
+.rate-card:nth-child(4), .rate-card:nth-child(5), .rate-card:nth-child(6) { border-bottom: none; }
+
+.rate-label {
+  font-size: 11px; color: #0C2139; font-weight: 700;
+  text-align: center; margin-bottom: 8px;
+  opacity: 0.45; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.rate-value-row {
+  display: flex; align-items: baseline; justify-content: center;
+  gap: 6px; margin-bottom: 10px;
+}
+.rate-pct { font-size: 26px; font-weight: 700; color: #0C2139; }
+.rate-change { font-size: 13px; font-weight: 700; }
+.rate-change.positive { color: #d0021b; }
+.rate-change.negative { color: #2a7a2a; }
+.rate-change.neutral  { color: #bbb; }
+
+.range-bar-wrap {
+  margin: 4px 0; display: flex; align-items: center;
+  gap: 5px; font-size: 10px; color: #bbb;
+}
+.range-bar-outer {
+  flex: 1; height: 5px; background: #eee;
+  border-radius: 3px; position: relative;
+}
+.range-bar-fill {
+  position: absolute; left: 0; top: 0; height: 100%;
+  background: #c5d8e8; border-radius: 3px;
+}
+.range-needle {
+  position: absolute; top: -4px; width: 3px; height: 13px;
+  background: #BAD532; border-radius: 2px; transform: translateX(-50%);
+}
+.rate-monthly {
+  text-align: center; font-size: 12px; color: #0C2139;
+  margin-top: 8px; font-weight: 600; opacity: 0.6;
+}
+
+/* ── Loan row ── */
+.loan-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; margin: 8px 0 24px; font-size: 13px;
+  font-weight: 600; color: #0C2139; flex-wrap: wrap;
+}
+.loan-input {
+  border: 1px solid #ddd; border-radius: 4px;
+  padding: 7px 10px; font-size: 13px; width: 130px;
+  text-align: right; color: #0C2139;
+}
+.loan-input:focus { outline: 2px solid #BAD532; border-color: transparent; }
+.loan-link {
+  color: #0C2139; text-decoration: underline;
+  font-weight: 500; font-size: 13px;
+}
+
+/* ── Bottom ── */
+.bottom-section {
+  display: grid; grid-template-columns: 1fr 270px;
+  gap: 28px; align-items: start;
+}
+.chart-section h3 { font-size: 12px; color: #aaa; margin-bottom: 8px; font-weight: 500; }
+.chart-links { margin-top: 10px; font-size: 12px; color: #888; }
+.chart-links a { color: #0C2139; text-decoration: none; margin-right: 3px; font-weight: 600; }
+.chart-links a:hover { text-decoration: underline; }
+.chart-links span { color: #ddd; margin-right: 3px; }
+
+/* ── Trend panel ── */
+.trend-title {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.6px; margin-bottom: 10px; color: #0C2139;
+}
+.trend-bar-wrap { position: relative; margin-bottom: 16px; }
+.trend-bar { display: flex; height: 26px; border-radius: 4px; overflow: hidden; }
+.trend-seg {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700; color: white;
+  letter-spacing: 0.5px; flex: 1;
+}
+.trend-seg.pos { background: #3a8a3a; }
+.trend-seg.min { background: #aaa; }
+.trend-seg.neg { background: #c0392b; }
+.trend-needle {
+  position: absolute; top: -4px; width: 3px; height: 34px;
+  background: #BAD532; border-radius: 2px; transform: translateX(-50%);
+}
+.trend-text { font-size: 13px; color: #444; line-height: 1.65; margin-bottom: 10px; }
+.mbs-link { color: #0C2139; font-weight: 700; }
+.highlight-green {
+  background: #BAD532; color: #0C2139;
+  padding: 1px 7px; border-radius: 3px; font-weight: 700;
+}
+.trend-disclaimer { font-size: 11px; color: #ccc; line-height: 1.5; }
+.trend-disclaimer a { color: #888; text-decoration: none; }
+.trend-disclaimer a:hover { text-decoration: underline; }
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE — Squarespace embed
+   ════════════════════════════════════════════════ */
+
+/* Tablet */
+@media (max-width: 800px) {
+  .header-inner { padding: 16px 18px; }
+  .header h1 { font-size: 19px; }
+  .content { padding: 16px 18px; }
+  .bottom-section { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* Large phone: grid 2 columnas */
+@media (max-width: 580px) {
+  .rate-grid { grid-template-columns: repeat(2, 1fr); }
+  /* reset reglas de 3 columnas */
+  .rate-card:nth-child(3n)   { border-right: 1px solid #e8e8e8; }
+  .rate-card:nth-child(4),
+  .rate-card:nth-child(5),
+  .rate-card:nth-child(6)    { border-bottom: 1px solid #e8e8e8; }
+  /* aplicar reglas de 2 columnas */
+  .rate-card:nth-child(2n)   { border-right: none; }
+  .rate-card:nth-child(5),
+  .rate-card:nth-child(6)    { border-bottom: none; }
+  .rate-pct { font-size: 22px; }
+  .loan-row { font-size: 12px; gap: 8px; }
+}
+
+/* Small phone: grid 1 columna */
+@media (max-width: 380px) {
+  .header h1 { font-size: 17px; }
+  .header-inner { padding: 14px 14px; }
+  .content { padding: 14px 14px; }
+  .btn-share, .btn-more { padding: 7px 11px; font-size: 12px; }
+  .rate-grid { grid-template-columns: 1fr; }
+  .rate-card          { border-right: none !important; border-bottom: 1px solid #e8e8e8 !important; }
+  .rate-card:last-child { border-bottom: none !important; }
+  .rate-pct { font-size: 24px; }
+}
