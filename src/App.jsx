@@ -78,6 +78,17 @@ function buildFallbackRates(history) {
 
 // ── FRED fetch ────────────────────────────────────────────────
 async function fredFetch(seriesId, limit) {
+  // 1️⃣ Netlify serverless function (mismo dominio, sin CORS)
+  try {
+    const url = `/.netlify/functions/fred?series_id=${seriesId}&limit=${limit}`
+    const res = await fetch(url)
+    if (res.ok) {
+      const json = await res.json()
+      if (json.observations) return json.observations.filter(o => o.value !== '.')
+    }
+  } catch { /* continúa al respaldo */ }
+
+  // 2️⃣ CORS proxy fallback (desarrollo local u otros entornos)
   const base =
     `https://api.stlouisfed.org/fred/series/observations` +
     `?series_id=${seriesId}&api_key=${FRED_API_KEY}` +
