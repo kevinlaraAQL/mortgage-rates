@@ -205,8 +205,23 @@ function RateCard({ item, loanAmount }) {
   )
 }
 
+// ── Auto-resize for iframe embed ─────────────────────────────
+function useIframeResize() {
+  useEffect(() => {
+    function send() {
+      const h = document.documentElement.scrollHeight
+      window.parent.postMessage({ iframeHeight: h }, '*')
+    }
+    send()
+    const ro = new ResizeObserver(send)
+    ro.observe(document.documentElement)
+    return () => ro.disconnect()
+  }, [])
+}
+
 // ── Main ──────────────────────────────────────────────────────
 export default function App() {
+  useIframeResize()
   const fallbackHistory = buildFallbackHistory()
 
   const [history,  setHistory]  = useState(fallbackHistory)

@@ -176,14 +176,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-s
   .loan-row { font-size: 12px; gap: 8px; }
 }
 
-/* Small phone: grid 1 columna */
-@media (max-width: 380px) {
+/* Phone: grid 1 columna */
+@media (max-width: 480px) {
   .header h1 { font-size: 17px; }
-  .header-inner { padding: 14px 14px; }
-  .content { padding: 14px 14px; }
-  .btn-share, .btn-more { padding: 7px 11px; font-size: 12px; }
+  .header-inner { padding: 12px 14px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .header-right { width: 100%; justify-content: space-between; }
+  .content { padding: 12px 14px; }
+  .btn-share { padding: 7px 14px; font-size: 12px; }
+  /* 1 columna: resetear bordes anteriores y aplicar nueva regla */
   .rate-grid { grid-template-columns: 1fr; }
-  .rate-card          { border-right: none !important; border-bottom: 1px solid #e8e8e8 !important; }
-  .rate-card:last-child { border-bottom: none !important; }
-  .rate-pct { font-size: 24px; }
+  .rate-card                 { border-right: none !important; border-bottom: 1px solid #e8e8e8 !important; }
+  .rate-card:last-child      { border-bottom: none !important; }
+  .rate-pct { font-size: 26px; }
+  .bottom-section            { grid-template-columns: 1fr; gap: 20px; }
+  .loan-row                  { flex-direction: column; align-items: center; gap: 6px; text-align: center; }
 }
