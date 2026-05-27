@@ -128,8 +128,16 @@ async function loadFredData() {
     }
   })
 
-  const lastDate = new Date(obs30[0].date + 'T12:00:00')
-  const updatedLabel = lastDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+  const fredDate = new Date(obs30[0].date + 'T12:00:00')
+  const fetchedAt = new Date()
+
+  const datePart = fredDate.toLocaleDateString('en-US', {
+    weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'
+  })
+  const timePart = fetchedAt.toLocaleTimeString('en-US', {
+    hour: 'numeric', minute: '2-digit', hour12: true
+  })
+  const updatedLabel = `${datePart} · ${timePart}`
 
   return { rates, chartData, updatedLabel }
 }
