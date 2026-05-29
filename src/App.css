@@ -179,20 +179,30 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-s
 /* Phone: 2 columnas compactas (NO 1 columna, para no alargar la sección) */
 @media (max-width: 480px) {
   .header h1 { font-size: 17px; }
-  .header-inner { padding: 12px 14px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .header-inner { padding: 10px 14px; flex-direction: column; align-items: flex-start; gap: 6px; }
   .header-right { width: 100%; justify-content: space-between; }
-  .content { padding: 12px 14px; }
-  .btn-share { padding: 7px 14px; font-size: 12px; }
+  .content { padding: 10px 14px 14px; }
+  .btn-share { padding: 6px 14px; font-size: 12px; }
+  .subtitle { font-size: 11px; margin-bottom: 10px; }
   /* mantener 2 columnas, tarjetas más compactas */
-  .rate-card        { padding: 12px 8px; }
-  .rate-label       { font-size: 9px; margin-bottom: 5px; letter-spacing: 0.3px; }
-  .rate-value-row   { gap: 4px; margin-bottom: 7px; }
-  .rate-pct         { font-size: 20px; }
+  .rate-grid        { margin-bottom: 10px; }
+  .rate-card        { padding: 9px 8px; }
+  .rate-label       { font-size: 9px; margin-bottom: 2px; letter-spacing: 0.3px; }
+  .rate-value-row   { gap: 4px; margin-bottom: 4px; }
+  .rate-pct         { font-size: 19px; }
   .rate-change      { font-size: 11px; }
-  .range-bar-wrap   { font-size: 8px; gap: 3px; }
-  .rate-monthly     { font-size: 11px; margin-top: 6px; }
-  .bottom-section   { grid-template-columns: 1fr; gap: 18px; }
-  .loan-row         { flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+  .range-bar-wrap   { font-size: 8px; gap: 3px; margin: 2px 0; }
+  .rate-monthly     { font-size: 11px; margin-top: 3px; }
+  /* fila de préstamo y secciones más juntas */
+  .loan-row         { flex-direction: column; align-items: center; gap: 5px; text-align: center; margin: 6px 0 14px; }
+  .bottom-section   { grid-template-columns: 1fr; gap: 12px; }
+  .chart-section h3 { margin-bottom: 4px; }
+  .chart-links      { margin-top: 6px; }
+  /* panel de tendencia más compacto */
+  .trend-title      { margin-bottom: 6px; }
+  .trend-bar-wrap   { margin-bottom: 10px; }
+  .trend-text       { font-size: 12px; line-height: 1.45; margin-bottom: 0; }
+  .trend-disclaimer { display: none; }  /* ocultar texto legal largo en móvil */
 }
 
 /* Phone muy pequeño: ajustes finos para que quepan 2 columnas */

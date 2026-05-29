@@ -341,7 +341,7 @@ export default function App() {
           {/* Chart */}
           <div className="chart-section">
             <h3>30 and 15 Year Fixed Rates</h3>
-            <ResponsiveContainer width="100%" height={isMobile ? 180 : 260}>
+            <ResponsiveContainer width="100%" height={isMobile ? 150 : 260}>
               <AreaChart data={history} margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
                 <defs>
                   <linearGradient id="g30" x1="0" y1="0" x2="0" y2="1">
