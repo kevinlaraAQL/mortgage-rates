@@ -230,7 +230,7 @@ function useIframeResize() {
 }
 
 // ── Detecta viewport móvil para ajustar la altura del gráfico ──
-function useIsMobile(breakpoint = 480) {
+function useIsMobile(breakpoint = 540) {
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' ? window.innerWidth <= breakpoint : false
   )
