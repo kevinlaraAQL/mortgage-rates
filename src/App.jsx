@@ -27,6 +27,7 @@ function buildFallbackHistory() {
   const nowWeek = absWeekNow()
   const WEEKS   = 260
   const data    = []
+  const seenYears = new Set()
   let r30 = 3.20, r15 = 2.80
 
   for (let i = 0; i < WEEKS; i++) {
@@ -44,8 +45,12 @@ function buildFallbackHistory() {
     r30 = Math.max(2.65, Math.min(7.9, r30 + d30 + (rand(w * 17 + 3) - 0.5) * 0.08))
     r15 = Math.max(2.35, Math.min(7.4, r15 + d15 + (rand(w * 17 + 7) - 0.5) * 0.06))
 
+    // Mostrar el año solo en su primera aparición (evita etiquetas duplicadas)
+    const showYear = !seenYears.has(yr)
+    if (showYear) seenYears.add(yr)
+
     data.push({
-      label:     mo === 0 ? `${yr}` : '',
+      label:     showYear ? `${yr}` : '',
       fullLabel: `${yr}-${String(mo + 1).padStart(2, '0')}`,
       rate30: parseFloat(r30.toFixed(2)),
       rate15: parseFloat(r15.toFixed(2)),
@@ -142,10 +147,15 @@ async function loadFredData() {
   const map15 = {}
   obs15.forEach(o => { map15[o.date] = parseFloat(o.value) })
 
+  const seenYears = new Set()
   const chartData = obs30.slice().reverse().map(o => {
-    const d = new Date(o.date + 'T12:00:00')
+    const d  = new Date(o.date + 'T12:00:00')
+    const yr = d.getFullYear()
+    // Mostrar el año solo en su primera aparición (evita etiquetas duplicadas)
+    const showYear = !seenYears.has(yr)
+    if (showYear) seenYears.add(yr)
     return {
-      label:     d.getMonth() === 0 ? `${d.getFullYear()}` : '',
+      label:     showYear ? `${yr}` : '',
       fullLabel: o.date.slice(0, 7),
       rate30:    parseFloat(o.value),
       rate15:    map15[o.date] ?? null,
